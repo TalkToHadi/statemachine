@@ -47,7 +47,7 @@ class FeelUp(State):
     def next(self, answer):
         if 'y' in answer:
             return Introduce()
-        return NoHelp()
+        return Oops()
 
 class FeelDown(State):
     def run(self):
@@ -135,6 +135,14 @@ class HomeSick(State):
         if 'music' in answer:
             return Music()
         return NoHelp()
+
+class Oops(State):
+    def run(self):
+        print("Oops, I'm sorry to hear that")
+        print("Talk to me later if you want")
+
+    def next(self, answer):
+        return None
 
 
 currentState = Initial()
