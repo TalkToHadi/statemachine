@@ -186,6 +186,7 @@ class Lonely(State):
 class MeetUp(State):
     def run(self):
         print("Check MeetUp! You'll find something you like for sure")
+        print("http://www.meetup.com/")
 
     def next(self, answer):
         return None
@@ -207,6 +208,7 @@ class Introduce(State):
 class GoogleMaps(State):
     def run(self):
         print("Try searching at GoogleMaps :)")
+        print("https://www.google.com/maps")
 
     def next(self, answer):
         return None
