@@ -62,6 +62,7 @@ class FeelDown(State):
         print("I feel lonely")
         print("I'm angry")
         print("I'm feeling ill")
+        print("None of that")
         return raw_input()
 
     def next(self, answer):
@@ -83,6 +84,8 @@ class FeelDown(State):
             return Angry()
         if "I'm feeling ill" in answer:
             return Ill()
+        if "None of that" in answer:
+            return NoHelp()
 
 class Bored(State):
     def run(self):
