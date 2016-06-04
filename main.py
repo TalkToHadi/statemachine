@@ -86,10 +86,18 @@ class FeelDown(State):
 
 class Lost(State):
     def run(self):
-        print ("Look this awesome link to german national health system")
+        print ("What are you looking for?")
+        print("I want to go somewhere")
+        print("I need help with my paperwork")
+        print("Someone to talk to")
 
     def next(self, answer):
-        None
+        if 'somewhere' in answer:
+            return GoogleMaps()
+        if 'paperwork' in answer:
+            return Burocrazy()
+        if 'Someone' in answer:
+            return Lonely()
 
 class Ill(State):
     def run(self):
