@@ -89,12 +89,62 @@ class HotLine(State):
         print("You need inmediate help!")
         print("Call the emergency hotline")
 
+class Bored(State):
+    def run(self):
+        print ("Would you like to meet people with your same interests?")
+        print("Yeah, sure!")
+        print("Not right now")
+
+    def next(self, answer):
+        if 'Yeah' in answer:
+            return MeetUp()
+        if "Not" in answer:
+            return Bored2()
+
+class Bored2(State):
+    def run(self):
+        print ("What about viewing some funny videos?")
+        print("Yes, of course!")
+        print("Not really")
+
+    def next(self, answer):
+        if 'Yeah' in answer:
+            return FunnyVideos()
+        if "Not" in answer:
+            return Bored3()
+
+class Bored3(State):
+    def run(self):
+        print ("Do you prefer to go to cinema?")
+        print("Yeah, I'd love to!")
+        print("Not right now")
+
+    def next(self, answer):
+        if 'Yeah' in answer:
+            return Cinema()
+        if "Not" in answer:
+            return Sports()
+
+
+class FunnyVideos(State):
+    def run(self):
+        print("Check this web page!")
+        print("https://www.youtube.com/results?search_query=funny")
+
     def next(self, answer):
         return None
 
 class HeadSpace(State):
     def run(self):
         print ("Try an app like HeadSpace to learn how to meditate")
+
+    def next(self, answer):
+        return None
+
+class Cinema(State):
+    def run(self):
+        print("Here you can find cinemas around you!")
+        print("https://www.google.com/maps?q=cinema")
 
     def next(self, answer):
         return None
@@ -111,6 +161,14 @@ class Tired(State):
             return HeadSpace()
         if 'physcally' in answer:
             return Sleeping()
+
+class Sports(State):
+    def run(self):
+        print("Here you can find sports events (and more)!")
+        print("https://www.sportsworld.co.uk/events")
+
+    def next(self, answer):
+        return None
 
 class Lost(State):
     def run(self):
