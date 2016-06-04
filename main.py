@@ -66,25 +66,29 @@ class FeelDown(State):
         return raw_input()
 
     def next(self, answer):
-        if "I'm bored" in answer:
+        if "bored" in answer:
             return Bored()
-        if "I'm sad" in answer:
+        if "sad" in answer:
             return Sad()
-        if "I'm stressed with paperwork" in answer:
+        if "paperwork" in answer:
             return Burocrazy()
-        if "I'm lost" in answer:
+        if "stressed" in answer:
+            return Burocrazy()
+        if "lost" in answer:
             return Lost()
-        if "I'm tired" in answer:
+        if "tired" in answer:
             return Tired()
-        if "I miss my country" in answer:
+        if "miss" in answer:
             return HomeSick()
-        if "I feel lonely" in answer:
+        if "country" in answer:
+            return HomeSick()
+        if "lonely" in answer:
             return Lonely()
-        if "I'm angry" in answer:
+        if "angry" in answer:
             return Angry()
-        if "I'm feeling ill" in answer:
+        if "ill" in answer:
             return Ill()
-        if "None of that" in answer:
+        if "None" in answer:
             return NoHelp()
 
 class Bored(State):
