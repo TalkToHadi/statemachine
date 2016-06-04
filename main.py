@@ -90,7 +90,7 @@ class HotLine(State):
         print("You need inmediate help!")
         print("Call the emergency hotline")
         print("http://www.suicide.org/hotlines/international/germany-suicide-hotlines.html")
-
+        print("http://www.frauenhauskoordinierung.de/english-summary.html")
 
 
 class Bored(State):
