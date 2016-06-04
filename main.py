@@ -201,6 +201,7 @@ class MeetUp(State):
 class TedTalk(State):
     def run(self):
         print("Watch this inpirational talks on how to deal with feeling lonely")
+        print("http://www.keepinspiring.me/25-creative-and-surprising-things-to-do-when-you-feel-lonely/")
 
     def next(self, answer):
         return None
