@@ -25,6 +25,8 @@ class Initial(State):
             return Critical()
         if 'lonely' in answer:
             return Lonely()
+        if 'homesick' in answer:
+            return HomeSick()
         return NoHelp()
 
 class Lonely(State):
@@ -38,8 +40,22 @@ class Lonely(State):
         return HomeSick()
 
 class Introduce(State):
-   def run(self):
+    def run(self):
         print("Let me introduce you to my friend Hans!")
+
+    def next(self, answer):
+        return None
+
+class Sports(State):
+    def run(self):
+        print("You could visit your university sports club and join a team :)")
+
+    def next(self, answer):
+        return None
+
+class Music(State):
+    def run(self):
+        print("Check the bars at WurtsPlatz, there are always cool gigs there!")
 
     def next(self, answer):
         return None
@@ -51,8 +67,14 @@ class HomeSick(State):
         return raw_input("What are you into?")
 
     def next(self, answer):
-        return None
+        if 'sports' in answer:
+            return Sports()
+        if 'music' in answer:
+            return Music()
+        return NoHelp()
 
+
+currentState = Initial()
 
 while True:
     if currentState:
