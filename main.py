@@ -62,27 +62,34 @@ class FeelDown(State):
         print("I feel lonely")
         print("I'm angry")
         print("I'm feeling ill")
+        print("None of that")
         return raw_input()
 
     def next(self, answer):
-        if "I'm bored" in answer:
+        if "bored" in answer:
             return Bored()
-        if "I'm sad" in answer:
+        if "sad" in answer:
             return Sad()
-        if "I'm stressed with paperwork" in answer:
+        if "paperwork" in answer:
             return Burocrazy()
-        if "I'm lost" in answer:
+        if "stressed" in answer:
+            return Burocrazy()
+        if "lost" in answer:
             return Lost()
-        if "I'm tired" in answer:
+        if "tired" in answer:
             return Tired()
-        if "I miss my country" in answer:
+        if "miss" in answer:
             return HomeSick()
-        if "I feel lonely" in answer:
+        if "country" in answer:
+            return HomeSick()
+        if "lonely" in answer:
             return Lonely()
-        if "I'm angry" in answer:
+        if "angry" in answer:
             return Angry()
-        if "I'm feeling ill" in answer:
+        if "ill" in answer:
             return Ill()
+        if "None" in answer:
+            return NoHelp()
 
 class HotLine(State):
     def run(self):
@@ -211,6 +218,7 @@ class Lonely(State):
 class MeetUp(State):
     def run(self):
         print("Check MeetUp! You'll find something you like for sure")
+        print("http://www.meetup.com/")
 
     def next(self, answer):
         return None
@@ -218,6 +226,7 @@ class MeetUp(State):
 class TedTalk(State):
     def run(self):
         print("Watch this inpirational talks on how to deal with feeling lonely")
+        print("http://www.keepinspiring.me/25-creative-and-surprising-things-to-do-when-you-feel-lonely/")
 
     def next(self, answer):
         return None
@@ -232,6 +241,7 @@ class Introduce(State):
 class GoogleMaps(State):
     def run(self):
         print("Try searching at GoogleMaps :)")
+        print("https://www.google.com/maps")
 
     def next(self, answer):
         return None
