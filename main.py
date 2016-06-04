@@ -16,6 +16,14 @@ class NoHelp(State):
     def next(self, answer):
         return None
 
+class Burocrazy(State):
+    def run(self):
+        print("Sorry, I can't help you with this but I know who can!")
+        print("You should check Burocrazy, those guys are cool")
+
+    def next(self, answer):
+        return None
+
 class Initial(State):
     def run(self):
         return raw_input("How are you feeling today?")
@@ -27,6 +35,8 @@ class Initial(State):
             return Lonely()
         if 'homesick' in answer:
             return HomeSick()
+        if 'burocracy' in answer:
+            return Burocrazy()
         return NoHelp()
 
 class Lonely(State):
