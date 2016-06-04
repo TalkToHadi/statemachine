@@ -84,6 +84,13 @@ class FeelDown(State):
         if "I'm feeling ill" in answer:
             return Ill()
 
+class Lost(State):
+    def run(self):
+        print ("Look this awesome link to german national health system")
+
+    def next(self, answer):
+        None
+
 class Ill(State):
     def run(self):
         print ("Look this awesome link to german national health system")
@@ -96,11 +103,29 @@ class Lonely(State):
         print("Would you like to meet new people?")
         print("Yeah, I would like talk with someone")
         print("It would be cool to join some activity")
+        print("Not right now")
 
     def next(self, answer):
-        if 'yes' in answer:
+        if 'Yeah' in answer:
             return Introduce()
-        return HomeSick()
+        if "activity" in answer:
+            return MeetUp()
+        if "Not" in answer:
+            return TedTalk()
+
+class MeetUp(State):
+    def run(self):
+        print("Check MeetUp! You'll find something you like for sure")
+
+    def next(self, answer):
+        return None
+
+class TedTalk(State):
+    def run(self):
+        print("Watch this inpirational talks on how to deal with feeling lonely")
+
+    def next(self, answer):
+        return None
 
 class Introduce(State):
     def run(self):
@@ -109,32 +134,25 @@ class Introduce(State):
     def next(self, answer):
         return None
 
-class Sports(State):
+class GoogleMaps(State):
     def run(self):
-        print("You could visit your university sports club and join a team :)")
-
-    def next(self, answer):
-        return None
-
-class Music(State):
-    def run(self):
-        print("Check the bars at WurtsPlatz, there are always cool gigs there!")
+        print("Try searching at GoogleMaps :)")
 
     def next(self, answer):
         return None
 
 class HomeSick(State):
     def run(self):
-        print("It's hard to be away from home, but there are pleanty of\
-              things you can do!")
-        return raw_input("What are you into?")
+        print("It's hard to be away from home")
+        print("Some food would be great")
+        print("I would like to find cool things to do around")
+        return raw_input("")
 
     def next(self, answer):
-        if 'sports' in answer:
-            return Sports()
-        if 'music' in answer:
-            return Music()
-        return NoHelp()
+        if 'food' in answer:
+            return GoogleMaps()
+        if 'things' in answer:
+            return MeetUp()
 
 
 currentState = Initial()
