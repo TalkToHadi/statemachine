@@ -26,17 +26,27 @@ class Burocrazy(State):
 
 class Initial(State):
     def run(self):
-        return raw_input("How are you feeling today?")
+        print("Hi there. My name is Hadi")
+        print("I'm here for you. What's up")
+        print("A - I feel up")
+        print("B - I feel down")
+        return raw_input("")
 
     def next(self, answer):
-        if 'critical' in answer:
-            return Critical()
-        if 'lonely' in answer:
-            return Lonely()
-        if 'homesick' in answer:
-            return HomeSick()
-        if 'burocracy' in answer:
-            return Burocrazy()
+        if 'up' in answer:
+            return FeelUp()
+        if 'down' in answer:
+            #return FeelDown()
+        return NoHelp()
+
+class FeelUp(State):
+    def run(self):
+        print("Great!")
+        return raw_input("Would you like to cheer someone up?")
+
+    def next(self, answer):
+        if 'y' in answer:
+            return Introduce()
         return NoHelp()
 
 class Lonely(State):
