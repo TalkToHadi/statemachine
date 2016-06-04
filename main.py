@@ -4,52 +4,61 @@ from state import State
 
 class Critical(State):
     def run(self):
-        print("Critical: please seek help inmediatly")
+        print("Please seek help inmediatly")
 
     def next(self, answer):
         return None
 
 class NoHelp(State):
     def run(self):
-        print("NoHelp: sorry, we can't help you with this")
+        print("Sorry, I can't help you with this")
 
     def next(self, answer):
         return None
 
 class Initial(State):
     def run(self):
-        return raw_input("Initial: How are you feeling today?")
+        return raw_input("How are you feeling today?")
 
     def next(self, answer):
         if 'critical' in answer:
-            return Sara['critial']
+            return Critical()
         if 'lonely' in answer:
-            return Sara['lonely']
-        return Sara['nohelp']
+            return Lonely()
+        return NoHelp()
 
 class Lonely(State):
     def run(self):
-        print("Lonely: so sorry to hear that")
+        print("So sorry to hear that")
+        return raw_input("Would you like to meet new people?")
+
+    def next(self, answer):
+        if 'yes' in answer:
+            return Introduce()
+        return HomeSick()
+
+class Introduce(State):
+   def run(self):
+        print("Let me introduce you to my friend Hans!")
 
     def next(self, answer):
         return None
 
+class HomeSick(State):
+    def run(self):
+        print("It's hard to be away from home, but there are pleanty of\
+              things you can do!")
+        return raw_input("What are you into?")
 
-# Static variable initialization:
-Sara = {
-    'critial': Critical(),
-    'nohelp': NoHelp(),
-    'initial': Initial(),
-    'lonely': Lonely(),
-}
-currentState = Sara['initial']
+    def next(self, answer):
+        return None
+
 
 while True:
     if currentState:
         answer = currentState.run()
         currentState = currentState.next(answer)
     else:
-        print 'Done!'
         break
 
 
