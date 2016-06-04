@@ -6,23 +6,17 @@ class Critical(State):
     def run(self):
         print("Please seek help inmediatly")
 
-    def next(self, answer):
-        return None
 
 class NoHelp(State):
     def run(self):
         print("Sorry, I can't help you with this")
 
-    def next(self, answer):
-        return None
 
 class Burocrazy(State):
     def run(self):
         print("Sorry, I can't help you with this but I know who can!")
         print("You should check Burocrazy, those guys are cool")
 
-    def next(self, answer):
-        return None
 
 class Initial(State):
     def run(self):
@@ -95,6 +89,9 @@ class HotLine(State):
     def run(self):
         print("You need inmediate help!")
         print("Call the emergency hotline")
+        print("http://www.suicide.org/hotlines/international/germany-suicide-hotlines.html")
+
+
 
 class Bored(State):
     def run(self):
@@ -138,23 +135,17 @@ class FunnyVideos(State):
         print("Check this web page!")
         print("https://www.youtube.com/results?search_query=funny")
 
-    def next(self, answer):
-        return None
 
 class HeadSpace(State):
     def run(self):
         print ("Try an app like HeadSpace to learn how to meditate")
 
-    def next(self, answer):
-        return None
 
 class Cinema(State):
     def run(self):
         print("Here you can find cinemas around you!")
         print("https://www.google.com/maps?q=cinema")
 
-    def next(self, answer):
-        return None
 
 class Tired(State):
     def run(self):
@@ -174,8 +165,6 @@ class Sports(State):
         print("Here you can find sports events (and more)!")
         print("https://www.sportsworld.co.uk/events")
 
-    def next(self, answer):
-        return None
 
 class Lost(State):
     def run(self):
@@ -197,9 +186,6 @@ class Ill(State):
     def run(self):
         print ("Look this awesome link to german national health system")
 
-    def next(self, answer):
-        None
-
 class Lonely(State):
     def run(self):
         print("Would you like to meet new people?")
@@ -220,31 +206,23 @@ class MeetUp(State):
         print("Check MeetUp! You'll find something you like for sure")
         print("http://www.meetup.com/")
 
-    def next(self, answer):
-        return None
 
 class TedTalk(State):
     def run(self):
         print("Watch this inpirational talks on how to deal with feeling lonely")
         print("http://www.keepinspiring.me/25-creative-and-surprising-things-to-do-when-you-feel-lonely/")
 
-    def next(self, answer):
-        return None
 
 class Introduce(State):
     def run(self):
         print("Let me introduce you to my friend Hans!")
 
-    def next(self, answer):
-        return None
 
 class GoogleMaps(State):
     def run(self):
         print("Try searching at GoogleMaps :)")
         print("https://www.google.com/maps")
 
-    def next(self, answer):
-        return None
 
 class HomeSick(State):
     def run(self):
@@ -264,8 +242,6 @@ class Oops(State):
         print("Oops, I'm sorry to hear that")
         print("Talk to me later if you want")
 
-    def next(self, answer):
-        return None
 
 
 currentState = Initial()
