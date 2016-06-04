@@ -36,7 +36,7 @@ class Initial(State):
         if 'up' in answer:
             return FeelUp()
         if 'down' in answer:
-            #return FeelDown()
+            return FeelDown()
         return NoHelp()
 
 class FeelUp(State):
@@ -49,10 +49,53 @@ class FeelUp(State):
             return Introduce()
         return NoHelp()
 
-class Lonely(State):
+class FeelDown(State):
     def run(self):
         print("So sorry to hear that")
-        return raw_input("Would you like to meet new people?")
+        print("Whats wrong?")
+        print("I'm bored")
+        print("I'm sad")
+        print("I'm stressed with paperwork")
+        print("I'm lost")
+        print("I'm tired")
+        print("I miss my country")
+        print("I feel lonely")
+        print("I'm angry")
+        print("I'm feeling ill")
+        return raw_input()
+
+    def next(self, answer):
+        if "I'm bored" in answer:
+            return Bored()
+        if "I'm sad" in answer:
+            return Sad()
+        if "I'm stressed with paperwork" in answer:
+            return Burocrazy()
+        if "I'm lost" in answer:
+            return Lost()
+        if "I'm tired" in answer:
+            return Tired()
+        if "I miss my country" in answer:
+            return HomeSick()
+        if "I feel lonely" in answer:
+            return Lonely()
+        if "I'm angry" in answer:
+            return Angry()
+        if "I'm feeling ill" in answer:
+            return Ill()
+
+class Ill(State):
+    def run(self):
+        print ("Look this awesome link to german national health system")
+
+    def next(self, answer):
+        None
+
+class Lonely(State):
+    def run(self):
+        print("Would you like to meet new people?")
+        print("Yeah, I would like talk with someone")
+        print("It would be cool to join some activity")
 
     def next(self, answer):
         if 'yes' in answer:
