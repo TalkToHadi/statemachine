@@ -84,12 +84,41 @@ class FeelDown(State):
         if "I'm feeling ill" in answer:
             return Ill()
 
+class HotLine(State):
+    def run(self):
+        print("You need inmediate help!")
+        print("Call the emergency hotline")
+
+    def next(self, answer):
+        return None
+
+class HeadSpace(State):
+    def run(self):
+        print ("Try an app like HeadSpace to learn how to meditate")
+
+    def next(self, answer):
+        return None
+
+class Tired(State):
+    def run(self):
+        print ("Why are you tired?")
+        print("I'm mentally exhausted")
+        print("I feel my body has no energy")
+        return raw_input()
+
+    def next(self, answer):
+        if 'mentally' in answer:
+            return HeadSpace()
+        if 'physcally' in answer:
+            return Sleeping()
+
 class Lost(State):
     def run(self):
         print ("What are you looking for?")
         print("I want to go somewhere")
         print("I need help with my paperwork")
         print("Someone to talk to")
+        return raw_input()
 
     def next(self, answer):
         if 'somewhere' in answer:
